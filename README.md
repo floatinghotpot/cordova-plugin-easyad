@@ -47,7 +47,7 @@ Ensure you have a proper AdMob account and create an Id for your android app. Fo
 APIs:
 - showBanner(true/false, options, success, fail);
 - removeBanner(success, fail);
-_ requestInterstital(options, success, fail);
+- requestInterstital(options, success, fail);
 - showInterstitial(success, fail);
 
 Events: 
@@ -106,7 +106,6 @@ function inYourCode() {
 	
 	// if you like, more options to control
 	showBanner(true, {
-		'publisherId': your_admob_id, // by default, it's empty, ''. it will be loaded from AndroidManifest.xml.
 	    'bannerAtTop': false, // by default, false. set to true, to make banner at top
 	    'overlap': false,  // by default, false. set to true, to allow banner view overlap web content
 	    'offsetTopBar': false, // by default, false. set to true, to avoid ios 7 status bar overlap
@@ -116,7 +115,6 @@ function inYourCode() {
 	});
 	
 	requestInterstitial({ 
-		'publisherId': your_admob_id, // by default, it's empty, ''. it will be loaded from AndroidManifest.xml.
 		'isTesting': false,	// by default, false. set to true, for testing purpose.
 		'autoShow': false	// by default, false. set to true, show the Ad once ad resource loaded.
 	}, function(){
