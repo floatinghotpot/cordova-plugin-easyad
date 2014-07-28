@@ -6,7 +6,7 @@
 	version="1.0.0">
       
     <name>EasyAd</name>
-	<description>Add AdMob/iAd support to cordova apps with minimum effort</description>
+	<description>Easiest way to dd AdMob/iAd support to cordova apps, less code, smaller package</description>
 	<author>Liming Xie</author>
 	<license>MIT</license>
 	<keywords>ad,admob,iad</keywords>
