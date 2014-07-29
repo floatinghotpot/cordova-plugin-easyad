@@ -24,8 +24,7 @@ Besides EasyAd plugin, there are some other options, all working on cordova:
 ## How to use? ##
 To install this plugin, follow the [Command-line Interface Guide](http://cordova.apache.org/docs/en/edge/guide_cli_index.md.html#The%20Command-line%20Interface).
 
-    cordova plugin add https://github.com/floatinghotpot/cordova-plugin-easyad.git \
-    --variable ADMOB_ID_ANDROID="your admob id"
+    cordova plugin add https://github.com/floatinghotpot/cordova-plugin-easyad.git 
 
 Note: 
 Ensure you have a proper AdMob account and create an Id for your android app. For iOS, admob key not needed, since it will link to your Apple Id.
@@ -35,8 +34,7 @@ Ensure you have a proper AdMob account and create an Id for your android app. Fo
     cd testad
     cordova platform add android
     cordova platform add ios
-    cordova plugin add https://github.com/floatinghotpot/cordova-plugin-easyad.git \
-    	--variable ADMOB_ID_ANDROID=ca-app-pub-6869992474017983/9375997553
+    cordova plugin add https://github.com/floatinghotpot/cordova-plugin-easyad.git
     rm -r www/*
     cp plugins/com.rjfun.cordova.plugin.easyad/test/* www/
     cordova prepare; cordova run android; cordova run ios;
@@ -95,31 +93,27 @@ function registerAdEvents() {
 }
 // --- end of snippets ---
 
+var admob_ios_key = 'ca-app-pub-6869992474017983/4806197152';
+var admob_android_key = 'ca-app-pub-6869992474017983/9375997553';
+var admob_id = (/(android)/i.test(navigator.userAgent)) ? admob_android_key : admob_ios_key;
+
+var adOptions = {
+	    publisherId: admob_id,
+            bannerAtTop: false, // by default, false. set to true, to make banner at top
+            overlap: false,  // by default, false. set to true, to allow banner view overlap web content
+            offsetTopBar: false, // by default, false. set to true, to avoid ios 7 status bar overlap
+            isTesting: false, // by default, false. set to true, for testing purpose
+	    autoShow: true // false by default, set to true to display interstitial ad once loaded.
+        };
+
 function inYourCode() {
 	// some where after onDeviceReady
 	initAd();
 	
 	// the most simple code to show Ad
-	showBanner();
-	requestInterstitial();
+	showBanner(true, adOptions);
+	requestInterstitial(adOptions);
 	showInterstitial();
-	
-	// if you like, more options to control
-	showBanner(true, {
-	    'bannerAtTop': false, // by default, false. set to true, to make banner at top
-	    'overlap': false,  // by default, false. set to true, to allow banner view overlap web content
-	    'offsetTopBar': false, // by default, false. set to true, to avoid ios 7 status bar overlap
-	    'isTesting': false // by default, false. set to true, for testing purpose
-	}, function(){
-	}, function(){
-	});
-	
-	requestInterstitial({ 
-		'isTesting': false,	// by default, false. set to true, for testing purpose.
-		'autoShow': false	// by default, false. set to true, show the Ad once ad resource loaded.
-	}, function(){
-	}, function(){
-	});
 }
 	
 ```

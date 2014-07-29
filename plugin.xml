@@ -24,15 +24,10 @@
     <!-- android -->
     <platform name="android">
     	<dependency id="com.google.admobsdk-googleplay" version=">=4.4.0"/>
-    	<preference name="ADMOB_ID_ANDROID"/>
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="EasyAd">
                 <param name="android-package" value="com.rjfun.cordova.plugin.EasyAd"/>
             </feature>
-        </config-file>
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-        	<meta-data android:name="admob_id" 
-        		android:value="$ADMOB_ID_ANDROID" />
         </config-file>
         <source-file src="src/android/EasyAd.java" target-dir="src/com/rjfun/cordova/plugin" />
      </platform>
